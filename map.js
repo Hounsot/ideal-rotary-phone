@@ -6692,5 +6692,42 @@ let map = null;
         ));
         let MapMarkerImage = document.querySelector('#MapMarker')
         MapMarkerImage.style.transform = 'translateY(-64px)';
+        
+        // Add additional markers
+        const ADDITIONAL_MARKER_COORDINATES = [
+            [38.047673, 55.803061],
+            [37.912301, 55.626487],
+            [37.420644, 55.494288],
+            [37.155443, 55.440994],
+            [37.195831, 55.565071],
+            [37.571947, 55.524691]
+        ];
+        
+        ADDITIONAL_MARKER_COORDINATES.forEach((coords) => {
+            const extraMarkerElement = document.createElement('div');
+            extraMarkerElement.className = 'custom-marker';
+            extraMarkerElement.innerHTML = '<img style="height:63.97px; width: 54px;" src="https://optim.tildacdn.com/tild3130-3037-4062-b735-613533393333/-/resize/216x/-/format/webp/Map_pin.png.webp" alt="">';
+            
+            const extraMarkerContainer = document.createElement('div');
+            extraMarkerContainer.appendChild(extraMarkerElement);
+            extraMarkerContainer.onclick = () => {
+                map.update({
+                    location: {
+                        ...LOCATION,
+                        duration: 400
+                    }
+                });
+            };
+            
+            map.addChild(new YMapMarker(
+                { coordinates: coords },
+                extraMarkerContainer
+            ));
+            
+            const img = extraMarkerContainer.querySelector('img');
+            if (img) {
+                img.style.transform = 'translateY(-64px)';
+            }
+        });
     }
 })
