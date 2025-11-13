@@ -6669,7 +6669,7 @@ let map = null;
         // Create custom marker
         const markerElement = document.createElement('div');
         markerElement.className = 'custom-marker';
-        markerElement.innerHTML = '<img id="MapMarker" style="height:63.97px; width: 54px;" src="https://optim.tildacdn.com/tild3130-3037-4062-b735-613533393333/-/resize/216x/-/format/webp/Map_pin.png.webp" alt="">';
+        markerElement.innerHTML = '<img id="MapMarker" style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px;" src="https://optim.tildacdn.com/tild3130-3037-4062-b735-613533393333/-/resize/216x/-/format/webp/Map_pin.png.webp" alt="">';
         
         // Create container for marker elements
         const markerContainer = document.createElement('div');
@@ -6706,7 +6706,7 @@ let map = null;
         ADDITIONAL_MARKER_COORDINATES.forEach((coords) => {
             const extraMarkerElement = document.createElement('div');
             extraMarkerElement.className = 'custom-marker';
-            extraMarkerElement.innerHTML = '<img style="height:63.97px; width: 54px;" src="https://optim.tildacdn.com/tild3130-3037-4062-b735-613533393333/-/resize/216x/-/format/webp/Map_pin.png.webp" alt="">';
+            extraMarkerElement.innerHTML = '<img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px;" src="https://optim.tildacdn.com/tild3130-3037-4062-b735-613533393333/-/resize/216x/-/format/webp/Map_pin.png.webp" alt="">';
             
             const extraMarkerContainer = document.createElement('div');
             extraMarkerContainer.appendChild(extraMarkerElement);
