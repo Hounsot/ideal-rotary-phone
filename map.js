@@ -6702,13 +6702,21 @@ let map = null;
             [37.571947, 55.524691]
         ];
         const ADDITIONAL_MARKER_ICONS = [
-            'balashiha.png',
-            'tokarevo.png',
+            'balashiha.png', 
             'senkino.png',
             'sokolovo.png',
             'kuvekino.png',
+            'tokarevo.png',
             DEFAULT_PIN_URL
         ];
+        // const ADDITIONAL_MARKER_ICONS = [
+        //     'balashiha.png', 
+        //     'tokarevo.png',
+        //     'senkino.png',
+        //     'sokolovo.png',
+        //     'kuvekino.png',
+        //     DEFAULT_PIN_URL
+        // ];
         
         ADDITIONAL_MARKER_COORDINATES.forEach((coords, idx) => {
             const extraMarkerElement = document.createElement('div');
