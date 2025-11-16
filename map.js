@@ -20,12 +20,12 @@ let map = null;
             YMapGeolocationControl
         } = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
 
-        // Define coordinates 55.800717, 38.044708
-        const CENTER_COORDINATES = [37.194674, 55.565233];
+        // Define coordinates 55.755892, 37.617188
+        const CENTER_COORDINATES = [37.617188, 55.755892];
         const MARKER_COORDINATES = [37.194674, 55.565233];
         const LOCATION = {
             center: CENTER_COORDINATES,
-            zoom: 12
+            zoom: 15
         };
 
         // Initialize map
@@ -6666,10 +6666,10 @@ let map = null;
         }));
         map.addChild(new YMapDefaultFeaturesLayer());
 
-        // Create custom marker
+        // Create custom marker (primary)
         const markerElement = document.createElement('div');
         markerElement.className = 'custom-marker';
-        markerElement.innerHTML = '<img id="MapMarker" style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px;" src="https://optim.tildacdn.com/tild3130-3037-4062-b735-613533393333/-/resize/216x/-/format/webp/Map_pin.png.webp" alt="">';
+        markerElement.innerHTML = '<img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="tokarevo.png" alt="">';
         
         // Create container for marker elements
         const markerContainer = document.createElement('div');
@@ -6690,10 +6690,9 @@ let map = null;
             { coordinates: MARKER_COORDINATES },
             markerContainer
         ));
-        let MapMarkerImage = document.querySelector('#MapMarker')
-        MapMarkerImage.style.transform = 'translateY(-64px)';
         
-        // Add additional markers
+        // Add additional markers with distinct icons per location
+        const DEFAULT_PIN_URL = 'https://optim.tildacdn.com/tild3130-3037-4062-b735-613533393333/-/resize/216x/-/format/webp/Map_pin.png.webp';
         const ADDITIONAL_MARKER_COORDINATES = [
             [38.047673, 55.803061],
             [37.912301, 55.626487],
@@ -6702,11 +6701,20 @@ let map = null;
             [37.195831, 55.565071],
             [37.571947, 55.524691]
         ];
+        const ADDITIONAL_MARKER_ICONS = [
+            'balashiha.png',
+            'kuvekino.png',
+            'senkino.png',
+            'sokolovo.png',
+            'tokarevo.png',
+            DEFAULT_PIN_URL
+        ];
         
-        ADDITIONAL_MARKER_COORDINATES.forEach((coords) => {
+        ADDITIONAL_MARKER_COORDINATES.forEach((coords, idx) => {
             const extraMarkerElement = document.createElement('div');
             extraMarkerElement.className = 'custom-marker';
-            extraMarkerElement.innerHTML = '<img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px;" src="https://optim.tildacdn.com/tild3130-3037-4062-b735-613533393333/-/resize/216x/-/format/webp/Map_pin.png.webp" alt="">';
+            const iconSrc = ADDITIONAL_MARKER_ICONS[idx] || DEFAULT_PIN_URL;
+            extraMarkerElement.innerHTML = `<img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="${iconSrc}" alt="">`;
             
             const extraMarkerContainer = document.createElement('div');
             extraMarkerContainer.appendChild(extraMarkerElement);
@@ -6723,11 +6731,6 @@ let map = null;
                 { coordinates: coords },
                 extraMarkerContainer
             ));
-            
-            const img = extraMarkerContainer.querySelector('img');
-            if (img) {
-                img.style.transform = 'translateY(-64px)';
-            }
         });
     }
 })
