@@ -6669,7 +6669,7 @@ let map = null;
         // Create custom marker (primary)
         const markerElement = document.createElement('div');
         markerElement.className = 'custom-marker';
-        markerElement.innerHTML = '<img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="tokarevo.png" alt="">';
+        markerElement.innerHTML = '<a href="https://tokarevo-prom.ru"><img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="tokarevo.png" alt=""></a>';
         
         // Create container for marker elements
         const markerContainer = document.createElement('div');
