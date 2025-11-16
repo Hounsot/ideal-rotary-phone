@@ -6703,10 +6703,10 @@ let map = null;
         ];
         const ADDITIONAL_MARKER_ICONS = [
             'balashiha.png',
-            'kuvekino.png',
+            'tokarevo.png',
             'senkino.png',
             'sokolovo.png',
-            'tokarevo.png',
+            'kuvekino.png',
             DEFAULT_PIN_URL
         ];
         
