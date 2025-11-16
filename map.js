@@ -6707,6 +6707,7 @@ let map = null;
             'kuvekino.png',
             'senkino.png',
             'sokolovo.png',
+            'butovo.png',
             DEFAULT_PIN_URL
         ];
         // const ADDITIONAL_MARKER_ICONS = [
