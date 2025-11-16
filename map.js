@@ -6703,18 +6703,18 @@ let map = null;
         ];
         const ADDITIONAL_MARKER_ICONS = [
             'balashiha.png', 
+            'tokarevo.png',
+            'kuvekino.png',
             'senkino.png',
             'sokolovo.png',
-            'kuvekino.png',
-            'tokarevo.png',
             DEFAULT_PIN_URL
         ];
         // const ADDITIONAL_MARKER_ICONS = [
         //     'balashiha.png', 
-        //     'tokarevo.png',
         //     'senkino.png',
         //     'sokolovo.png',
         //     'kuvekino.png',
+        //     'tokarevo.png',
         //     DEFAULT_PIN_URL
         // ];
         
