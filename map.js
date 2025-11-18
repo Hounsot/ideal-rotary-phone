@@ -6675,15 +6675,17 @@ let map = null;
         const markerContainer = document.createElement('div');
         markerContainer.appendChild(markerElement);
 
-        // Add click handler
-        markerContainer.onclick = () => {
-            map.update({
-                location: {
-                    ...LOCATION,
-                    duration: 400
-                }
+        // Make marker open link (prevent map from intercepting the click)
+        const linkEl = markerElement.querySelector('a');
+        if (linkEl) {
+            markerContainer.style.pointerEvents = 'auto';
+            markerContainer.style.cursor = 'pointer';
+            markerContainer.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(linkEl.href, '_blank', 'noopener');
             });
-        };
+        }
 
         // Add marker to map
         map.addChild(new YMapMarker(
