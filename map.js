@@ -6681,6 +6681,7 @@ let map = null;
             markerContainer.style.pointerEvents = 'auto';
             markerContainer.style.cursor = 'pointer';
             markerContainer.addEventListener('click', (e) => {
+                console.log('click');
                 e.preventDefault();
                 e.stopPropagation();
                 window.open(linkEl.href, '_blank', 'noopener');
