@@ -6669,28 +6669,38 @@ let map = null;
         // Create custom marker (primary)
         const markerElement = document.createElement('div');
         markerElement.className = 'custom-marker';
-        markerElement.innerHTML = '<a href="https://tokarevo-prom.ru"><img id="test" style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="tokarevo.png" alt=""></a>';
+        markerElement.innerHTML = '<a href="https://tokarevo-prom.ru" target="_blank" rel="noopener noreferrer"><img id="test" style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="tokarevo.png" alt=""></a>';
         
         // Create container for marker elements
         const markerContainer = document.createElement('div');
         markerContainer.appendChild(markerElement);
 
-        // Make marker open link (prevent map from intercepting the click)
+        // Make marker open link (ensure clicks aren't swallowed by the map)
         const linkEl = markerElement.querySelector('a');
+        const imgEl = markerElement.querySelector('img');
         if (linkEl) {
-            markerContainer.style.pointerEvents = 'auto';
-            markerContainer.style.cursor = 'pointer';
-            markerContainer.addEventListener('click', (e) => {
-                console.log('click');
+            const openLink = (e) => {
+                console.log('marker click');
                 e.preventDefault();
                 e.stopPropagation();
                 window.open(linkEl.href, '_blank', 'noopener');
-            });
+            };
+            // Ensure clickability
+            markerContainer.style.pointerEvents = 'auto';
+            markerElement.style.pointerEvents = 'auto';
+            linkEl.style.pointerEvents = 'auto';
+            if (imgEl) imgEl.style.pointerEvents = 'auto';
+            markerContainer.style.cursor = 'pointer';
+            if (imgEl) imgEl.style.cursor = 'pointer';
+            // Multiple listeners as fallback
+            linkEl.addEventListener('click', openLink, { passive: false });
+            markerElement.addEventListener('click', openLink, { passive: false });
+            markerContainer.addEventListener('click', openLink, { passive: false });
         }
 
         // Add marker to map
         map.addChild(new YMapMarker(
-            { coordinates: MARKER_COORDINATES },
+            { coordinates: MARKER_COORDINATES, zIndex: 10000 },
             markerContainer
         ));
         
@@ -6730,6 +6740,14 @@ let map = null;
             
             const extraMarkerContainer = document.createElement('div');
             extraMarkerContainer.appendChild(extraMarkerElement);
+            // Ensure clicks on extra markers are also captured
+            extraMarkerContainer.style.pointerEvents = 'auto';
+            extraMarkerElement.style.pointerEvents = 'auto';
+            const extraImg = extraMarkerElement.querySelector('img');
+            if (extraImg) {
+                extraImg.style.pointerEvents = 'auto';
+                extraImg.style.cursor = 'pointer';
+            }
             extraMarkerContainer.onclick = () => {
                 map.update({
                     location: {
@@ -6740,7 +6758,7 @@ let map = null;
             };
             
             map.addChild(new YMapMarker(
-                { coordinates: coords },
+                { coordinates: coords, zIndex: 10000 },
                 extraMarkerContainer
             ));
         });
