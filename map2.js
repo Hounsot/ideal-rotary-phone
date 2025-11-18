@@ -6701,6 +6701,14 @@ let map = null;
             [37.195831, 55.565071],
             [37.571947, 55.524691]
         ];
+        const LINK_URLS = [
+            'https://balashiha-prom.ru',
+            'https://tokarevo-prom.ru',
+            'https://kuvekino-prom.ru',
+            'https://senkino-prom.ru',
+            'https://sokolovo-prom.ru',
+            'https://butovo-prom.ru'
+        ];
         const ADDITIONAL_MARKER_ICONS = [
             'balashiha.png', 
             'tokarevo.png',
@@ -6723,7 +6731,7 @@ let map = null;
             const extraMarkerElement = document.createElement('div');
             extraMarkerElement.className = 'custom-marker';
             const iconSrc = ADDITIONAL_MARKER_ICONS[idx] || DEFAULT_PIN_URL;
-            extraMarkerElement.innerHTML = `<img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="${iconSrc}" alt="">`;
+            extraMarkerElement.innerHTML = `<a href="${LINK_URLS[idx]}"><img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="${iconSrc}" alt=""></a>`;
             
             const extraMarkerContainer = document.createElement('div');
             extraMarkerContainer.appendChild(extraMarkerElement);
