@@ -6669,7 +6669,7 @@ let map = null;
         // Create custom marker (primary)
         const markerElement = document.createElement('div');
         markerElement.className = 'custom-marker';
-        markerElement.innerHTML = '<a href="https://tokarevo-prom.ru"><img id="test" style="height:64px; width: 54px; min-width: 54px; min-height: 64px; transform: translateY(-64px);" src="tokarevo.png" alt=""></a>';
+        markerElement.innerHTML = '<a href="https://tokarevo-prom.ru" target="_blank"><img id="test" style="height:64px; width: 54px; min-width: 54px; min-height: 64px; transform: translateY(-64px);" src="tokarevo.png" alt=""></a>';
         
         // Create container for marker elements
         const markerContainer = document.createElement('div');
@@ -6731,7 +6731,7 @@ let map = null;
             const extraMarkerElement = document.createElement('div');
             extraMarkerElement.className = 'custom-marker';
             const iconSrc = ADDITIONAL_MARKER_ICONS[idx] || DEFAULT_PIN_URL;
-            extraMarkerElement.innerHTML = `<a href="${LINK_URLS[idx]}"><img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="${iconSrc}" alt=""></a>`;
+            extraMarkerElement.innerHTML = `<a href="${LINK_URLS[idx]}" target="_blank"><img style="height:63.97px; width: 54px; min-width: 54px; min-height: 63.97px; transform: translateY(-64px);" src="${iconSrc}" alt=""></a>`;
             
             const extraMarkerContainer = document.createElement('div');
             extraMarkerContainer.appendChild(extraMarkerElement);
